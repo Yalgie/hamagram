@@ -16,7 +16,7 @@ function App() {
             <Menu />
             <Switch>
                 <Route exact path="/" component={Landing} />
-                <PrivateRoute path="/dash" component={Dash} />
+                <Route path="/dash" component={Dash} />
                 <Route component={NotFound} />
             </Switch>
         </BrowserRouter>

@@ -25,12 +25,14 @@ router.post('/login', (req, res) => {
     const password = req.body.password;
    
     Hamster.find({ username: username }, (e, hamsters) => {
+        // If we can't find a user with the provided username
         if (hamsters.length === 0) {
             res.status(200).send({
                 authenticated: false,
                 message: "User Not Found"
             })
         }
+        // Comparing the stored hash with the provided password
         else {
             const hash = hamsters[0].password;
         
@@ -57,7 +59,11 @@ router.post('/login', (req, res) => {
 router.post('/logout', (req, res) => {
     req.session.auth = false;
     req.session = null;
-    res.status(200).send("Logged Out");
+    res.status(200).send({
+        redirect: true,
+        authenticated: false,
+        message: "Logged Out"
+    });
 });
 
 module.exports = router;

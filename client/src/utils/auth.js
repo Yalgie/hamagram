@@ -1,27 +1,19 @@
 import axios from 'axios';
 
-export const checkAuth = async () => {
-    await axios.post(`/api/v1/auth`).then(res => {
-        if (res.data.authenticated) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }).catch(e => {
-        throw e;
-    });
+export const checkAuth = async cb => {
+    const res = await axios.post(`/api/v1/auth`);
+    cb(res.data.authenticated);
 }
 
-export const logout = async () => {
-    await axios.post(`/api/v1/auth/logout`).then(res => {
-        if (res.status === 200) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }).catch(e => {
-        throw e;
+export const login = async (cb, username, password) => {
+    const res = await axios.post(`/api/v1/auth/login`, {
+        username,
+        password
     });
+    cb(res.data.authenticated);
+}
+
+export const logout = async cb => {
+    const res = await axios.post(`/api/v1/auth/logout`);
+    cb(res.data.authenticated);
 }
