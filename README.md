@@ -1,6 +1,6 @@
 # Hamagram (In Development)
 
-A blogging platform for hamsters built with the MERN stack and deployed to heroku. [View the live app here](https://hamagram.herokuapp.com/)
+A blogging platform for hamsters built with the MERN stack and deployed to heroku. [View the live app here](https://hamagram.herokuapp.com/) (Might take some time to load if the app is asleep).
 
 ## Getting Started
 ``` Install Instructions
