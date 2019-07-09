@@ -20,6 +20,7 @@ const Posts = ({ posts }) => {
             created={post.createdDate}
         />
     })
+    
     return (
         <Fragment>
             <h1>Posts</h1>

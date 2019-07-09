@@ -48,7 +48,7 @@ router.post('/login', (req, res) => {
                     res.status(200).send({
                         authenticated: true,
                         message: "Logged In",
-                        username: username
+                        username
                     })
                 }
                 else {
