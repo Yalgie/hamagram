@@ -3,7 +3,7 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, check } from "../store/actions";
 
-const Menu = ({ auth, msg, logout, check, path, history }) => {
+const Menu = ({ auth, logout, check, path, history }) => {
     const [checkAuth, setCheckAuth] = useState(true);
 
     useEffect(() => {
@@ -21,6 +21,8 @@ const Menu = ({ auth, msg, logout, check, path, history }) => {
     // Rendering menu UI based on authenticated state from redux
     if (auth) {
         return <Fragment>
+            <button><Link to="/posts">Posts</Link></button>
+            <button><Link to="/feed">Feed</Link></button>
             <button onClick={() => logout()}>Log Out</button>
         </Fragment>
     }

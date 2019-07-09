@@ -1,11 +1,10 @@
 import React, { Fragment } from "react";
-import Posts from "../components/Posts";
+import NewPost from "../components/NewPost";
 
 const Post = () => {
     return (
         <Fragment>
-            <h1>Posts</h1>
-            <Posts />
+            <NewPost />
         </Fragment>
     );
 };

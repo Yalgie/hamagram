@@ -10,6 +10,8 @@ import PrivateRoute from "./PrivateRoute";
 import Landing from "../pages/Landing";
 import Dash from "../pages/Dash";
 import Login from "../pages/Login";
+import Posts from "../pages/Posts";
+import Feed from "../pages/Feed";
 import SignUp from "../pages/SignUp";
 import NotFound from "../pages/NotFound";
 
@@ -24,6 +26,8 @@ function App() {
                 <Route path="/login" component={Login} />
                 <Route path="/signup" component={SignUp} />
                 <PrivateRoute path="/dash" component={Dash} />
+                <PrivateRoute path="/posts" component={Posts} />
+                <PrivateRoute path="/feed" component={Feed} />
                 <Route component={NotFound} />
             </Switch>
         </BrowserRouter>
