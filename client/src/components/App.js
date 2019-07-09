@@ -1,7 +1,10 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
 
+// Components
 import Menu from "./Menu";
+
+// Pages
 import Landing from "../pages/Landing";
 import NotFound from "../pages/NotFound";
 

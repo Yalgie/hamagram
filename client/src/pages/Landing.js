@@ -1,9 +1,12 @@
-import React from "react";
+import React, { Fragment } from "react";
+import SignUp from "../components/SignUp";
 
 const Landing = () => {
     return (
-        <h1>Home Page</h1>
-
+        <Fragment>
+            <h1>Home Page</h1>
+            <SignUp />
+        </Fragment>
     );
 };
 

@@ -6,18 +6,28 @@ const bodyParser = require('body-parser');
 const logger = require('morgan');
 const helmet = require('helmet');
 const chalk = require('chalk');
-
+const cookieSession = require('cookie-session');
 const { connect } = require('./db');
+const hamster = require('./api/v1/hamster');
 
 const info = chalk.bold.cyan;
 const app = express();
 const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV;
+const SECRET = process.env.SECRET;
 
+app.use(cookieSession({
+    name: 'hamagramSession',
+    secret: SECRET,
+    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+}));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json());
 app.use(cors());
 app.use(helmet());
+
+// Setting API routes
+app.use('/api/v1/hamster', hamster);
 
 if (ENV === "dev") {
     app.use(logger('dev'));
