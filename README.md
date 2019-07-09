@@ -33,3 +33,6 @@ Automatic builds are triggered on heroku upon pushing to the master branch.
 - Was going to use MobX but realised I used CRA v1 and decoraters aren't supported so going to use Redux
 - Set up redux to handle authentication state across the app.
 - Using react hooks with form data and redux dispatch events
+- Added authentication in and private routes that redirect if not authenticated
+- Added flash messaging for signup form
+- Starting to pass customized user data through
