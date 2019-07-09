@@ -8,6 +8,11 @@ export default (state = {}, action) => {
                 path: action.path,
                 username: action.username
             }
+        case 'SET_POSTS':
+            return {
+                ...state,
+                posts: action.posts
+            }
         default:
             return state;
     }

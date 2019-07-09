@@ -1,10 +1,12 @@
 import React, { Fragment, useState } from 'react';
 import marked from 'marked';
+import { withRouter } from 'react-router-dom';
 import markedParse from 'html-react-parser';
 import axios from 'axios';
 import { connect } from 'react-redux';
+import { getPosts } from "../store/actions";
 
-const NewPost = ({ username }) => {
+const NewPost = ({ username, history, getPosts }) => {
     const [title, setTitle] = useState("");
     const [md, setMd] = useState("");
     const [html, setHtml] = useState("");
@@ -21,8 +23,11 @@ const NewPost = ({ username }) => {
         await axios.post(`/api/v1/post`, {
             username,
             title,
-            content: JSON.stringify(md)
+            content: md
         });
+
+        getPosts();
+        history.push("/posts");
     }
 
     return (
@@ -44,4 +49,12 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(NewPost);
+const mapDispatchToProps = dispatch => {
+    return {
+        getPosts: () => {
+            dispatch(getPosts());
+        },
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NewPost));

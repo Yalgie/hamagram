@@ -5,6 +5,8 @@ const Post = () => {
     return (
         <Fragment>
             <h1>Posts</h1>
+            <p>Thumbs Up/Down Posts</p>
+            <p>Share Post</p>
             <Posts />
         </Fragment>
     );

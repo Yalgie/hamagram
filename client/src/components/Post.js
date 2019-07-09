@@ -1,9 +1,13 @@
 import React, { Fragment } from 'react';
 
-const Posts = () => {
+const Posts = ({ id, title, username, content, created}) => {
+
     return (
         <Fragment>
-            <h1>Post</h1>
+            <h1>{title}</h1>
+            <p>{username}</p>
+            {content}
+            <p>{created}</p>
         </Fragment>
     )
 }

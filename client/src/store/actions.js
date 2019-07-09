@@ -86,27 +86,15 @@ const createUser = (username, password) => {
     }
 }
 
-const createPost = () => {
-    // return async (dispatch) => {
-    //     const res = await axios.post(`/api/v1/hamster`, {
-    //         username,
-    //         password
-    //     });
+const getPosts = () => {
+    return async (dispatch) => {
+        const res = await axios.get(`/api/v1/post`);
 
-    //     let path = null;
-
-    //     if (res.data.authenticated) {
-    //         path = "/dash";
-    //     }
-
-    //     dispatch({
-    //         type: "SET_AUTH",
-    //         auth: res.data.authenticated,
-    //         msg: res.data.message,
-    //         username: res.data.username,
-    //         path: path
-    //     })
-    // }
+        dispatch({
+            type: "SET_POSTS",
+            posts: res.data.posts
+        })
+    }
 }
 
-export { login, logout, check, createUser, createPost };
+export { login, logout, check, createUser, getPosts };
