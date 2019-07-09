@@ -10,14 +10,14 @@ router.post('/', (req, res) => {
     if (isAuth) {
         res.status(200).send({
             authenticated: true,
-            message: "User Logged In",
+            message: null,
             username: req.session.username
         });
     }
     else {
         res.status(200).send({
             authenticated: false,
-            message: "User Not Logged In",
+            message: null,
             username: null
         });
     }

@@ -97,4 +97,15 @@ const getPosts = () => {
     }
 }
 
-export { login, logout, check, createUser, getPosts };
+const getHamsters = () => {
+    return async (dispatch) => {
+        const res = await axios.get(`/api/v1/hamster/all`);
+
+        dispatch({
+            type: "SET_HAMSTERS",
+            hamsters: res.data.hamsters
+        })
+    }
+}
+
+export { login, logout, check, createUser, getPosts, getHamsters };

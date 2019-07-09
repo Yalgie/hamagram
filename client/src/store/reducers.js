@@ -13,6 +13,11 @@ export default (state = {}, action) => {
                 ...state,
                 posts: action.posts
             }
+        case 'SET_HAMSTERS':
+            return {
+                ...state,
+                hamsters: action.hamsters
+            }
         default:
             return state;
     }

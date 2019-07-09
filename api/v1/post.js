@@ -23,7 +23,7 @@ router.get('/', (req, res) => {
 
     Post.find({}, (err, posts) => {
         res.status(200).send({
-            posts: posts
+            posts
         });
     });
 });

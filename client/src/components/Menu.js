@@ -1,9 +1,9 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout, check, getPosts } from "../store/actions";
+import { logout, check, getPosts, getHamsters } from "../store/actions";
 
-const Menu = ({ auth, logout, check, path, history, getPosts }) => {
+const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => {
     const [checkAuth, setCheckAuth] = useState(true);
 
     useEffect(() => {
@@ -12,10 +12,15 @@ const Menu = ({ auth, logout, check, path, history, getPosts }) => {
         }
         if (checkAuth) {
             check();
-            getPosts();
+            
             setCheckAuth(false);
         }
-    }, [path, checkAuth, history, check, getPosts]);
+
+        if (auth) {
+            getPosts();
+            getHamsters();
+        }
+    }, [path, checkAuth, history, check, getPosts, getHamsters, auth]);
     // Not really sure why I need to include these
     // React throws an error screaming about infinite loops
 
@@ -57,6 +62,9 @@ const mapDispatchToProps = dispatch => {
         },
         getPosts: () => {
             dispatch(getPosts());
+        },
+        getHamsters: () => {
+            dispatch(getHamsters());
         },
     }
 }

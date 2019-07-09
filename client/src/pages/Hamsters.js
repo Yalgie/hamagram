@@ -1,9 +1,10 @@
 import React, { Fragment } from "react";
+import HamsterList from "../components/HamsterList";
 
 const Hamsters = () => {
     return (
         <Fragment>
-            <h1>View All Hamsters</h1>
+            <HamsterList />
         </Fragment>
     );
 };

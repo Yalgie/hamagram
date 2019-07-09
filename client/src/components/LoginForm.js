@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { login } from "../store/actions";
+import { login, getPosts } from "../store/actions";
 
-const SignUp = ({ login }) => {
+const SignUp = ({ login, msg }) => {
     // Using react useState hooks
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -12,11 +12,11 @@ const SignUp = ({ login }) => {
             // Captures input data and passes it through to redux login action
             e.preventDefault();
             login(username, password);
-            setUsername("");
-            setPassword("");
+            getPosts();
         }}>
+            <code>{msg}</code>
             <input 
-                onChange={e => setUsername(e.target.value)} 
+                onChange={e => setUsername(e.target.value)}
                 type="text" 
                 placeholder="Enter Username" 
             />
@@ -32,12 +32,19 @@ const SignUp = ({ login }) => {
 
 // Redux Wizardry
 // Mapping state to props and passing dispatch functions through
-// Still need to initialize this even if it's empty due to redux params
-const mapStateToProps = state => ({});
+const mapStateToProps = state => {
+    return {
+        msg: state.msg
+    }
+}
+
 const mapDispatchToProps = dispatch => {
     return {
         login: (username, password) => {
             dispatch(login(username, password));
+        },
+        getPosts: () => {
+            dispatch(getPosts());
         }
     }
 }
