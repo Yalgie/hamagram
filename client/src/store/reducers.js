@@ -5,7 +5,8 @@ export default (state = {}, action) => {
                 ...state,
                 auth: action.auth,
                 msg: action.msg,
-                path: action.path
+                path: action.path,
+                username: action.username
             }
         default:
             return state;

@@ -18,7 +18,8 @@ router.post('/', (req, res) => {
         else {
             res.status(200).send({
                 authenticated: false,
-                message: "Username Taken"
+                message: "Username Taken",
+                username: null
             });
         }
     });
@@ -36,7 +37,8 @@ addNewUser = (username, hash, res, Hamster, req) => {
         req.session.username = username;
         res.status(200).send({
             authenticated: true,
-            message: "Hamster Created"
+            message: "Hamster Created",
+            username: username
         });
     });
 }

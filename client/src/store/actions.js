@@ -17,6 +17,7 @@ const login = (username, password) => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             msg: res.data.message,
+            username: res.data.username,
             path: path
         })
     }
@@ -36,6 +37,7 @@ const logout = () => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             msg: "Logged Out",
+            username: res.data.username,
             path: path
         })
     }
@@ -55,6 +57,7 @@ const check = () => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             msg: res.data.message,
+            username: res.data.username,
             path: path
         })
     }
@@ -77,6 +80,7 @@ const createUser = (username, password) => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             msg: res.data.message,
+            username: res.data.username,
             path: path
         })
     }
