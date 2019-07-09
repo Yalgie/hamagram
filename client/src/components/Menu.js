@@ -1,23 +1,24 @@
-import React, { Fragment, useEffect, useRef } from 'react';
-import { Link } from 'react-router-dom';
+import React, { Fragment, useEffect, useState } from 'react';
+import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, check } from "../store/actions";
-import LoginForm from './LoginForm';
 
-const Menu = ({ auth, msg, logout, check }) => {
-    const isInitialMount = useRef(true);
+const Menu = ({ auth, msg, logout, check, path, history }) => {
+    const [checkAuth, setCheckAuth] = useState(true);
 
     useEffect(() => {
-        if (isInitialMount.current) {
-            isInitialMount.current = false;
-            check()
+        if (path !== null) {
+            history.push(path);
         }
-    });
+        if (checkAuth) {
+            check();
+            setCheckAuth(false);
+        }
+    }, [path, checkAuth, history, check]);
 
     if (auth) {
         return <Fragment>
             <p>{msg}</p>
-            <button><Link to="/">Home</Link></button>
             <button><Link to="/dash">Dash</Link></button>
             <button onClick={() => logout()}>Log Out</button>
         </Fragment>
@@ -25,9 +26,7 @@ const Menu = ({ auth, msg, logout, check }) => {
     else {
         return <Fragment>
             <p>{msg}</p>
-            <button><Link to="/">Home</Link></button>
-            <button><Link to="/dash">Dash</Link></button>
-            <LoginForm />
+            <button><Link to="/login">Login</Link></button>
         </Fragment>
     }
 };
@@ -35,7 +34,8 @@ const Menu = ({ auth, msg, logout, check }) => {
 const mapStateToProps = state => {
     return {
         auth: state.auth,
-        msg: state.msg
+        msg: state.msg,
+        path: state.path
     }
 }
 
@@ -50,4 +50,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu);
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Menu));

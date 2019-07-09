@@ -4,7 +4,8 @@ export default (state = {}, action) => {
             return {
                 ...state,
                 auth: action.auth,
-                msg: action.msg
+                msg: action.msg,
+                path: action.path
             }
         default:
             return state;

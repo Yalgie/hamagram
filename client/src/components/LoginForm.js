@@ -1,16 +1,31 @@
-import React, { Component } from 'react';
+import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login } from "../store/actions";
 
-class SignUp extends Component {
-    render() {
-        return <div>
-            <button onClick={() => this.props.login(
-                "hamham",
-                "password"
-            )}>Sign In</button>
-        </div>
-    }
+const SignUp = ({ login }) => {
+    const [username, setUsername] = useState("");
+    const [password, setPassword] = useState("");
+
+    return (
+        <form onSubmit={(e) => {
+            e.preventDefault();
+            login(username, password);
+            setUsername("");
+            setPassword("");
+        }}>
+            <input 
+                onChange={e => setUsername(e.target.value)} 
+                type="text" 
+                placeholder="Enter Username" 
+            />
+            <input 
+                onChange={e => setPassword(e.target.value)} 
+                type="password" 
+                placeholder="Enter Password"
+            />
+            <button type="submit" value="submit">Log In</button>
+        </form>
+    )
 }
 
 const mapStateToProps = state => ({});

@@ -31,3 +31,5 @@ Automatic builds are triggered on heroku upon pushing to the master branch.
 - Built out test axios post request on react front end to test if api call works and saves to database - alternatively could have used something like Postman to do this but I need to build out the axios requests regardless
 - Using cookie-session instead of saving session data on a database like redis - just for this prototype it's less overhead and easier to setup, not the most secure thing but for the purpose of this app I think it's fine.
 - Was going to use MobX but realised I used CRA v1 and decoraters aren't supported so going to use Redux
+- Set up redux to handle authentication state across the app.
+- Using react hooks with form data and redux dispatch events
