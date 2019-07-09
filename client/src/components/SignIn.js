@@ -2,8 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 class SignUp extends Component {
-    createUser = () => {
-        axios.post(`/api/v1/hamster`, {
+    signIn = () => {
+        axios.post(`/api/v1/auth/login`, {
             username: "hamham",
             password: "password"
         }).then(res => {
@@ -13,17 +13,9 @@ class SignUp extends Component {
         });
     }
 
-    componentDidMount() {
-        axios.post(`/api/v1/auth`).then(res => {
-            console.log(res.data.authenticated)
-        }).catch(e => {
-            console.log(e);
-        });
-    }
-
     render() {
         return <div>
-            <button onClick={() => this.createUser()}>Create User</button>
+            <button onClick={() => this.signIn()}>Sign In</button>
         </div>
     }
 }

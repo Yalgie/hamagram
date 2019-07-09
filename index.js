@@ -8,7 +8,9 @@ const helmet = require('helmet');
 const chalk = require('chalk');
 const cookieSession = require('cookie-session');
 const { connect } = require('./db');
+
 const hamster = require('./api/v1/hamster');
+const auth = require('./api/v1/auth');
 
 const info = chalk.bold.cyan;
 const app = express();
@@ -28,6 +30,7 @@ app.use(helmet());
 
 // Setting API routes
 app.use('/api/v1/hamster', hamster);
+app.use('/api/v1/auth', auth);
 
 if (ENV === "dev") {
     app.use(logger('dev'));

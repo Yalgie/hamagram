@@ -12,7 +12,7 @@ router.post('/', (req, res) => {
     Hamster.find({ username: username }, (e, hamsters) => {
         if (hamsters.length === 0) {
             bcrypt.hash(password, 10, function (e, hash) {
-                addNewUser(username, hash, res, Hamster);
+                addNewUser(username, hash, res, Hamster, req);
             });
         }
         else {
@@ -21,7 +21,7 @@ router.post('/', (req, res) => {
     });
 });
 
-addNewUser = (username, hash, res, Hamster) => {
+addNewUser = (username, hash, res, Hamster, req) => {
     const newHamster = new Hamster({
         username: username,
         password: hash,
@@ -29,6 +29,8 @@ addNewUser = (username, hash, res, Hamster) => {
     });
 
     newHamster.save(() => {
+        req.session.auth = true;
+        req.session.username = username;
         res.status(200).send("Hamster Created");
     });
 }
