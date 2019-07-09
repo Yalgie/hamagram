@@ -16,9 +16,6 @@ cd ..
 npm run dev 
 ```
 
-## Deployment
-Automatic builds are triggered on heroku upon pushing to the master branch.
-
 # Process & Notes
 - Scaffolded the app with basic express app and CRA (create-react-app)
 - Tested deployment works to heroku with current architecture so I don't need to restructure anything later
