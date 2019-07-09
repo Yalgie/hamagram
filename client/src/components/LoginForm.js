@@ -3,11 +3,13 @@ import { connect } from 'react-redux';
 import { login } from "../store/actions";
 
 const SignUp = ({ login }) => {
+    // Using react useState hooks
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     return (
         <form onSubmit={(e) => {
+            // Captures input data and passes it through to redux login action
             e.preventDefault();
             login(username, password);
             setUsername("");
@@ -28,6 +30,9 @@ const SignUp = ({ login }) => {
     )
 }
 
+// Redux Wizardry
+// Mapping state to props and passing dispatch functions through
+// Still need to initialize this even if it's empty due to redux params
 const mapStateToProps = state => ({});
 const mapDispatchToProps = dispatch => {
     return {
@@ -36,6 +41,5 @@ const mapDispatchToProps = dispatch => {
         }
     }
 }
-
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

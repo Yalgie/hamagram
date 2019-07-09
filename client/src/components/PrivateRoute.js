@@ -1,15 +1,23 @@
 import React from "react";
 import { Route, Redirect } from "react-router-dom";
-import { checkAuth } from "../utils/auth";
+import { connect } from 'react-redux';
 
-const PrivateRoute = ({ component: Component, ...rest }) => {
-    const { isAuthenticated } = checkAuth();
-
-    return <Route {...rest} render={(props) => (
-        isAuthenticated
-        ? <Component {...props} />
-        : <Redirect to='/' />
+// Checks if the user is logged in and if not redirects them back to the login page
+const PrivateRoute = ({ component: Component, path, auth }) => {
+    return <Route path={path} render={() => (
+        auth
+        ? <Component />
+        : <Redirect to='/login' />
     )} />
 };
 
-export default PrivateRoute;
+// Redux Wizardry
+// Mapping state to props and passing dispatch functions through
+// No dispatch events for this component
+const mapStateToProps = state => {
+    return {
+        auth: state.auth
+    }
+}
+
+export default connect(mapStateToProps)(PrivateRoute);

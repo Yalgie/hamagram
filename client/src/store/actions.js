@@ -60,4 +60,26 @@ const check = () => {
     }
 }
 
-export { login, logout, check };
+const createUser = (username, password) => {
+    return async (dispatch) => {
+        const res = await axios.post(`/api/v1/hamster`, {
+            username,
+            password
+        });
+
+        let path = null;
+
+        if (res.data.authenticated) {
+            path = "/dash";
+        }
+
+        dispatch({
+            type: "SET_AUTH",
+            auth: res.data.authenticated,
+            msg: res.data.message,
+            path: path
+        })
+    }
+}
+
+export { login, logout, check, createUser };

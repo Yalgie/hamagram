@@ -15,22 +15,25 @@ const Menu = ({ auth, msg, logout, check, path, history }) => {
             setCheckAuth(false);
         }
     }, [path, checkAuth, history, check]);
+    // Not really sure why I need to include these
+    // React throws an error screaming about infinite loops
 
+    // Rendering menu UI based on authenticated state from redux
     if (auth) {
         return <Fragment>
-            <p>{msg}</p>
-            <button><Link to="/dash">Dash</Link></button>
             <button onClick={() => logout()}>Log Out</button>
         </Fragment>
     }
     else {
         return <Fragment>
-            <p>{msg}</p>
             <button><Link to="/login">Login</Link></button>
+            <button><Link to="/signup">Sign Up</Link></button>
         </Fragment>
     }
 };
 
+// Redux Wizardry
+// Mapping state to props and passing dispatch functions through
 const mapStateToProps = state => {
     return {
         auth: state.auth,
