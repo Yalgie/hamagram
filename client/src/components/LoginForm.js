@@ -1,34 +1,77 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login, getPosts } from "../store/actions";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const SignUp = ({ login, msg }) => {
     // Using react useState hooks
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
+    const classes = useStyles();
 
     return (
-        <form onSubmit={(e) => {
-            // Captures input data and passes it through to redux login action
-            e.preventDefault();
-            login(username, password);
-            getPosts();
-        }}>
-            <code>{msg}</code>
-            <input 
-                onChange={e => setUsername(e.target.value)}
-                type="text" 
-                placeholder="Enter Username" 
+        <form 
+            className={classes.container} 
+            noValidate 
+            autoComplete="off" 
+            onSubmit={(e) => {
+                e.preventDefault();
+                login(username, password);
+                getPosts();
+            }
+        }>
+            {/* <code>{error}</code>
+            <code>{msg}</code> */}
+            <TextField
+                required
+                label="Username"
+                id="username"
+                className={classes.textField}
+                autoComplete="username"
+                variant="outlined"
+                onChange={e => setUsername(e.target.value)} 
             />
-            <input 
+            <TextField
+                required
+                label="Password"
+                id="password"
+                className={classes.textField}
+                type="password"
+                autoComplete="current-password"
+                variant="outlined"
                 onChange={e => setPassword(e.target.value)} 
-                type="password" 
-                placeholder="Enter Password"
             />
-            <button type="submit" value="submit">Log In</button>
+
+            <Button 
+                type="submit" 
+                value="submit" 
+                variant="contained" 
+                className={classes.button}
+            >
+                Login
+            </Button>
         </form>
     )
 }
+
+const useStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        flexFlow: 'column',
+        marginTop: theme.spacing(1),
+    },
+    textField: {
+        marginBottom: theme.spacing(1),
+        maxWidth: '400px',
+        width: '100%'
+    },
+    button: {
+        marginTop: theme.spacing(1),
+        maxWidth: '400px',
+    },
+}));
 
 // Redux Wizardry
 // Mapping state to props and passing dispatch functions through

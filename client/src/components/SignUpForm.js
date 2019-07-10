@@ -40,7 +40,6 @@ const SignUp = ({ createUser, msg }) => {
                 label="Username"
                 id="username"
                 className={classes.textField}
-                margin="normal"
                 autoComplete="username"
                 variant="outlined"
                 onChange={e => setUsername(e.target.value)} 
@@ -51,7 +50,6 @@ const SignUp = ({ createUser, msg }) => {
                 id="password"
                 className={classes.textField}
                 type="password"
-                margin="normal"
                 autoComplete="current-password"
                 variant="outlined"
                 onChange={e => setPassword(e.target.value)}
@@ -62,7 +60,6 @@ const SignUp = ({ createUser, msg }) => {
                 id="password2"
                 className={classes.textField}
                 type="password"
-                margin="normal"
                 autoComplete="current-password"
                 variant="outlined"
                 onChange={e => setPassword2(e.target.value)} 
@@ -84,16 +81,15 @@ const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
         flexFlow: 'column',
-        alignItems: 'center'
+        marginTop: theme.spacing(1),
     },
     textField: {
-        marginLeft: theme.spacing(1),
-        marginRight: theme.spacing(1),
+        marginBottom: theme.spacing(1),
         maxWidth: '400px',
         width: '100%'
     },
     button: {
-        margin: theme.spacing(1),
+        marginTop: theme.spacing(1),
         maxWidth: '400px',
     },
 }));
