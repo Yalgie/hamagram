@@ -1,15 +1,14 @@
 import React, { Fragment } from "react";
 import Posts from "../components/Posts";
+import Typography from '@material-ui/core/Typography';
 
-const Post = () => {
+export default function Feed() {
     return (
         <Fragment>
-            <h1>Posts</h1>
-            <p>Thumbs Up/Down Posts</p>
-            <p>Share Post</p>
+            <Typography variant="h4" component="h1">
+                Feed
+            </Typography>
             <Posts />
         </Fragment>
     );
 };
-
-export default Post;

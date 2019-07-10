@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-const User = ({ username }) => {
+const UserData = ({ username }) => {
     return (
         <h1>Hello {username}</h1>
     )
@@ -15,4 +15,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(User);
+export default connect(mapStateToProps)(UserData);

@@ -2,7 +2,7 @@ import React, { Fragment } from "react";
 import LoginForm from "../components/LoginForm";
 import Typography from '@material-ui/core/Typography';
 
-const Landing = () => {
+export default function Login() {
     return (
         <Fragment>
             <Typography variant="h4" component="h1">
@@ -12,5 +12,3 @@ const Landing = () => {
         </Fragment>
     );
 };
-
-export default Landing;

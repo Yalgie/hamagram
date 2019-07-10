@@ -4,17 +4,17 @@ import Container from '@material-ui/core/Container';
 import Box from '@material-ui/core/Box';
 
 // Components
-import Menu from "./Menu";
+import Menu from "./_Menu";
 import PrivateRoute from "./PrivateRoute";
 
 // Pages
-import Landing from "../pages/Landing";
-import Dash from "../pages/Dash";
+import Home from "../pages/Home";
+import User from "../pages/User";
 import Login from "../pages/Login";
 import NewPost from "../pages/NewPost";
 import Hamsters from "../pages/Hamsters";
 import Feed from "../pages/Feed";
-import SignUp from "../pages/SignUp";
+import Register from "../pages/Register";
 import NotFound from "../pages/NotFound";
 
 // Standard react router bidness
@@ -27,10 +27,10 @@ function App() {
                 <Box my={4}>
                     <Menu />
                     <Switch>
-                        <Route exact path="/" component={Landing} />
+                        <Route exact path="/" component={Home} />
                         <Route path="/login" component={Login} />
-                        <Route path="/signup" component={SignUp} />
-                        <PrivateRoute path="/dash" component={Dash} />
+                        <Route path="/register" component={Register} />
+                        <PrivateRoute path="/User" component={User} />
                         <PrivateRoute path="/hamsters" component={Hamsters} />
                         <PrivateRoute path="/newPost" component={NewPost} />
                         <PrivateRoute path="/feed" component={Feed} />

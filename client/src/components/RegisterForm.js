@@ -5,7 +5,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const SignUp = ({ createUser, msg }) => {
+const RegisterForm = ({ createUser, msg }) => {
     // Using react useState hooks
     const [error, setError] = useState(null);
     const [username, setUsername] = useState("");
@@ -110,4 +110,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(SignUp);
+export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

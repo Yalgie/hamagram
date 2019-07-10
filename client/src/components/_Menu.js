@@ -32,7 +32,7 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
                 Login
             </Button>
         </Link>
-        <Link className={classes.link} to="/signup">
+        <Link className={classes.link} to="/register">
             <Button className={classes.button} variant="contained">
                 Register
             </Button>
@@ -41,6 +41,11 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
 
     if (auth) {
         menuItems = <Fragment>
+            <Link className={classes.link} to="/user">
+                <Button className={classes.button} variant="contained">
+                    User
+                </Button>
+            </Link>
             <Link className={classes.link} to="/newPost">
                 <Button className={classes.button} variant="contained">
                     New Post

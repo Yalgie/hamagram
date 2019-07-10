@@ -6,7 +6,7 @@ import axios from 'axios';
 import { connect } from 'react-redux';
 import { getPosts } from "../store/actions";
 
-const NewPost = ({ username, history, getPosts }) => {
+const PostForm = ({ username, history, getPosts }) => {
     const [title, setTitle] = useState("");
     const [md, setMd] = useState("");
     const [html, setHtml] = useState("");
@@ -63,4 +63,4 @@ const mapDispatchToProps = dispatch => {
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(NewPost));
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PostForm));

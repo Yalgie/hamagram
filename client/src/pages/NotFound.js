@@ -1,13 +1,12 @@
 import React, { Fragment } from 'react';
-import { Link } from 'react-router-dom'
+import Typography from '@material-ui/core/Typography';
 
-const NotFound = () => {
+export default function NotFound() {
     return (
         <Fragment>
-            <h1>404</h1>
-            <button><Link to="/">Return Home</Link></button>
+            <Typography variant="h4" component="h1">
+                404
+            </Typography>
         </Fragment>
     );
 };
-
-export default NotFound;

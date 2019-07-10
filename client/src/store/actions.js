@@ -20,7 +20,7 @@ const login = (username, password) => {
         let path = null;
 
         if (res.data.authenticated) {
-            path = "/dash";
+            path = "/user";
         }
 
         dispatch({

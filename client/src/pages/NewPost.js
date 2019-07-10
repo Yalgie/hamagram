@@ -1,12 +1,14 @@
 import React, { Fragment } from "react";
-import NewPost from "../components/NewPost";
+import PostForm from "../components/PostForm";
+import Typography from '@material-ui/core/Typography';
 
-const Post = () => {
+export default function NewPost() {
     return (
         <Fragment>
-            <NewPost />
+            <Typography variant="h4" component="h1">
+                New Post
+            </Typography>
+            <PostForm />
         </Fragment>
     );
 };
-
-export default Post;
