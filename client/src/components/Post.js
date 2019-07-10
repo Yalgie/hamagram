@@ -3,7 +3,7 @@ import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
-import useStyles from "./Styles/hamster";
+import useStyles from "./Styles/post";
 
 export default function Posts({ title, username, content, created}) {
     const classes = useStyles();

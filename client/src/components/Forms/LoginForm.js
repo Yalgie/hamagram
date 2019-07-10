@@ -6,14 +6,13 @@ import Button from '@material-ui/core/Button';
 import useStyles from "../Styles/form";
 
 const SignUp = ({ login }) => {
-    // Using react useState hooks
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const classes = useStyles();
 
     return (
         <form 
-            className={classes.loginContainer} 
+            className={classes.smallContainer} 
             noValidate 
             autoComplete="off" 
             onSubmit={(e) => {

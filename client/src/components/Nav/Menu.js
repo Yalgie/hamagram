@@ -2,8 +2,8 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, check, getPosts, getHamsters } from "../../store/actions";
-import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
+import useStyles from "../Styles/menu";
 
 const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => {
     const [checkAuth, setCheckAuth] = useState(true);
@@ -26,41 +26,26 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     // Not really sure why I need to include these
     // React throws an error screaming about infinite loops
 
+    const ButtonLink = ({ path, text }) => {
+        return <Link className={classes.link} activeClassName="active" to={path}>
+            <Button className={classes.button} variant="contained">
+                {text}
+            </Button>
+        </Link>
+    }
+
     let menuItems = <Fragment>
-        <Link className={classes.link} to="/login">
-            <Button className={classes.button} variant="contained">
-                Login
-            </Button>
-        </Link>
-        <Link className={classes.link} to="/register">
-            <Button className={classes.button} variant="contained">
-                Register
-            </Button>
-        </Link>
+        <ButtonLink path="/login" text="Login" />
+        <ButtonLink path="/register" text="Register" />
     </Fragment>
 
     if (auth) {
         menuItems = <Fragment>
-            <Link className={classes.link} to="/user">
-                <Button className={classes.button} variant="contained">
-                    User
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/newPost">
-                <Button className={classes.button} variant="contained">
-                    New Post
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/feed">
-                <Button className={classes.button} variant="contained">
-                    Feed
-                </Button>
-            </Link>
-            <Link className={classes.link} to="/hamsters">
-                <Button className={classes.button} variant="contained">
-                    Hamsters
-                </Button>
-            </Link>
+            <ButtonLink path="/user" text="User" />
+            <ButtonLink path="/newPost" text="New Post" />
+            <ButtonLink path="/feed" text="Feed" />
+            <ButtonLink path="/hamsters" text="Hamsters" />
+            
             <Button className={classes.button} onClick={logout} variant="contained">
                 Logout
             </Button>
@@ -68,27 +53,10 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     }
 
     return <Fragment>
-        <Link className={classes.link} to="/">
-            <Button className={classes.button} variant="contained">
-                Home
-            </Button>
-        </Link>
-
+        <ButtonLink path="/" text="Home" />
         {menuItems}
     </Fragment>
 };
-
-// MaterialUI Styles
-const useStyles = makeStyles(theme => ({
-    button: {
-        marginRight: theme.spacing(1),
-        marginBottom: theme.spacing(1),
-    },
-    link: {
-        color: "#333",
-        textDecoration: "none"
-    }
-}));
 
 // Redux Wizardry
 const mapStateToProps = state => {

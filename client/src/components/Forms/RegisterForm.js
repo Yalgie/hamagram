@@ -14,7 +14,7 @@ const RegisterForm = ({ createUser }) => {
 
     return (
         <form 
-            className={classes.container} 
+            className={classes.smallContainer} 
             noValidate 
             autoComplete="off" 
             onSubmit={(e) => {

@@ -6,7 +6,7 @@ export default makeStyles(theme => ({
         flexFlow: 'column',
         marginTop: theme.spacing(1),
     },
-    loginContainer: {
+    smallContainer: {
         display: 'flex',
         flexFlow: 'column',
         marginTop: theme.spacing(1),
