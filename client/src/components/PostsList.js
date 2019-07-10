@@ -1,12 +1,12 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Post from "./Post";
 import { connect } from 'react-redux';
 import markedParse from 'html-react-parser';
 import marked from 'marked';
 
-const Posts = ({ posts = [] }) => {
+const PostsList = ({ posts = [] }) => {
     // Looping through all posts in the DB and parsing the markdown
-    const postFeed = posts.map(post => {
+    const postsList = posts.map(post => {
         const html = marked(JSON.parse(post.content));
         const parsed = markedParse(html);
 
@@ -21,18 +21,14 @@ const Posts = ({ posts = [] }) => {
         />
     })
     
-    return (
-        <Fragment>
-            <h1>Posts</h1>
-            {postFeed}
-        </Fragment>
-    )
+    return postsList;
 }
 
+// Redux Wizardry
 const mapStateToProps = state => {
     return {
         posts: state.posts,
     }
 }
 
-export default connect(mapStateToProps)(Posts);
+export default connect(mapStateToProps)(PostsList);

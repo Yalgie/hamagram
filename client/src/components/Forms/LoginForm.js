@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
-import { login, getPosts } from "../store/actions";
+import { login, getPosts } from "../../store/actions";
 import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
-const SignUp = ({ login, msg }) => {
+const SignUp = ({ login }) => {
     // Using react useState hooks
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
@@ -22,8 +22,6 @@ const SignUp = ({ login, msg }) => {
                 getPosts();
             }
         }>
-            {/* <code>{error}</code>
-            <code>{msg}</code> */}
             <TextField
                 required
                 label="Username"
@@ -56,6 +54,7 @@ const SignUp = ({ login, msg }) => {
     )
 }
 
+// MaterialUI Styles
 const useStyles = makeStyles(theme => ({
     container: {
         display: 'flex',
@@ -74,7 +73,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // Redux Wizardry
-// Mapping state to props and passing dispatch functions through
 const mapStateToProps = state => {
     return {
         msg: state.msg

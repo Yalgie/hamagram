@@ -1,5 +1,7 @@
 const express = require('express');
 const router = express.Router();
+const chalk = require('chalk');
+const sucess = chalk.bold.green;
 const mongoose = require('mongoose');
 const postSchema = require('../../db/schemas/post');
 
@@ -12,6 +14,8 @@ router.post('/', (req, res) => {
         content: JSON.stringify(req.body.content),
         createdDate: Date.now()
     });
+
+    console.log(sucess(`Post: ${req.body.title} Created`))
 
     newPost.save(() => {
         res.sendStatus(200);

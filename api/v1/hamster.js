@@ -1,6 +1,8 @@
 const express = require('express');
 const router = express.Router();
 const mongoose = require('mongoose');
+const chalk = require('chalk');
+const sucess = chalk.bold.green;
 const bcrypt = require('bcrypt');
 const hamsterSchema = require('../../db/schemas/hamster');
 
@@ -75,6 +77,7 @@ addNewUser = (username, hash, res, Hamster, req) => {
     newHamster.save(() => {
         req.session.auth = true;
         req.session.username = username;
+        console.log(sucess(`Hamster: ${username} created`));
         res.status(200).send({
             authenticated: true,
             message: "Hamster Created",

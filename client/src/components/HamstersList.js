@@ -1,8 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 import Hamster from './Hamster';
 import { connect } from 'react-redux';
 
-const HamsterList = ({ hamsters = [] }) => {
+const HamstersList = ({ hamsters = [] }) => {
     const hamstersList = hamsters.map(hamster => {
         return <Hamster
             key={hamster._id}
@@ -12,12 +12,7 @@ const HamsterList = ({ hamsters = [] }) => {
         />
     })
 
-    return (
-        <Fragment>
-            <h1>Hamsters</h1>
-            {hamstersList}
-        </Fragment>
-    )
+    return hamstersList;
 }
 
 const mapStateToProps = state => {
@@ -26,4 +21,4 @@ const mapStateToProps = state => {
     }
 }
 
-export default connect(mapStateToProps)(HamsterList);
+export default connect(mapStateToProps)(HamstersList);

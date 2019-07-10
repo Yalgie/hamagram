@@ -78,7 +78,7 @@ const createUser = (username, password) => {
         let path = null;
 
         if (res.data.authenticated) {
-            path = "/dash";
+            path = "/user";
         }
 
         dispatch({
@@ -91,7 +91,7 @@ const createUser = (username, password) => {
     }
 }
 
-// Gets all posts
+// Gets ALL posts
 const getPosts = () => {
     return async (dispatch) => {
         const res = await axios.get(`/api/v1/post`);
@@ -103,7 +103,7 @@ const getPosts = () => {
     }
 }
 
-// Gets all hamsters
+// Gets ALL hamsters
 const getHamsters = () => {
     return async (dispatch) => {
         const res = await axios.get(`/api/v1/hamster/all`);

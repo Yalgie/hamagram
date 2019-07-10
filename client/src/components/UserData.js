@@ -1,14 +1,17 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { connect } from 'react-redux';
+import Typography from '@material-ui/core/Typography';
 
 const UserData = ({ username }) => {
     return (
-        <h1>Hello {username}</h1>
+        <Fragment>
+            <h1>Hello, {username}.</h1>
+            <p>Create a new post, explore and like other hamsters' posts or check out the other hamsters on the network!</p>
+        </Fragment>
     )
 }
 
 // Redux Wizardry
-// Mapping state to props and passing dispatch functions through
 const mapStateToProps = state => {
     return {
         username: state.username

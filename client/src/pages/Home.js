@@ -1,12 +1,10 @@
 import React, { Fragment } from "react";
-import Typography from '@material-ui/core/Typography';
 
 export default function Home() {
     return (
         <Fragment>
-            <Typography variant="h4" component="h1">
-                Home
-            </Typography>
+            <h1>Welcome to Hamstergram</h1>
+            <p>A blogging platform for hamsters of all shapes and sizes!</p>
         </Fragment>
     );
 }

@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 
-const Hamster = ({ id, username, created }) => {
+export default function Hamster({ username, created }) {
 
     return (
         <Fragment>
@@ -9,5 +9,3 @@ const Hamster = ({ id, username, created }) => {
         </Fragment>
     )
 }
-
-export default Hamster;

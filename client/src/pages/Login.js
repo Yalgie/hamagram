@@ -1,13 +1,10 @@
 import React, { Fragment } from "react";
-import LoginForm from "../components/LoginForm";
-import Typography from '@material-ui/core/Typography';
+import LoginForm from "../components/Forms/LoginForm";
 
 export default function Login() {
     return (
         <Fragment>
-            <Typography variant="h4" component="h1">
-                Login
-            </Typography>
+            <h1>Login</h1>
             <LoginForm />
         </Fragment>
     );

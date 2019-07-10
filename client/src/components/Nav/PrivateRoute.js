@@ -12,8 +12,6 @@ const PrivateRoute = ({ component: Component, path, auth }) => {
 };
 
 // Redux Wizardry
-// Mapping state to props and passing dispatch functions through
-// No dispatch events for this component
 const mapStateToProps = state => {
     return {
         auth: state.auth

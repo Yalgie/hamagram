@@ -1,13 +1,11 @@
 import React, { Fragment } from "react";
-import PostForm from "../components/PostForm";
-import Typography from '@material-ui/core/Typography';
+import PostForm from "../components/Forms/PostForm";
 
 export default function NewPost() {
     return (
         <Fragment>
-            <Typography variant="h4" component="h1">
-                New Post
-            </Typography>
+            <h1>Create a New Post</h1>
+            <p>Enter your post title and then enter your post content using markdown.</p>
             <PostForm />
         </Fragment>
     );

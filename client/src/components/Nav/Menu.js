@@ -1,7 +1,7 @@
 import React, { Fragment, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { logout, check, getPosts, getHamsters } from "../store/actions";
+import { logout, check, getPosts, getHamsters } from "../../store/actions";
 import { makeStyles } from '@material-ui/core/styles';
 import Button from '@material-ui/core/Button';
 
@@ -74,11 +74,11 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
             </Button>
         </Link>
 
-        { menuItems }
+        {menuItems}
     </Fragment>
 };
 
-
+// MaterialUI Styles
 const useStyles = makeStyles(theme => ({
     button: {
         marginRight: theme.spacing(1),
@@ -91,7 +91,6 @@ const useStyles = makeStyles(theme => ({
 }));
 
 // Redux Wizardry
-// Mapping state to props and passing dispatch functions through
 const mapStateToProps = state => {
     return {
         auth: state.auth,

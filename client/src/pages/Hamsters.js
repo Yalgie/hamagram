@@ -1,13 +1,10 @@
 import React, { Fragment } from "react";
-import HamsterList from "../components/HamsterList";
-import Typography from '@material-ui/core/Typography';
+import HamsterList from "../components/HamstersList";
 
 export default function Hamsters() {
     return (
         <Fragment>
-            <Typography variant="h4" component="h1">
-                Hamsters
-            </Typography>
+            <h1>Hamsters</h1>
             <HamsterList />
         </Fragment>
     );
