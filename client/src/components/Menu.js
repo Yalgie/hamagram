@@ -3,19 +3,16 @@ import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, check, getPosts, getHamsters } from "../store/actions";
 import Button from '@material-ui/core/Button';
-import Menu_UI from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 
 const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => {
     const [checkAuth, setCheckAuth] = useState(true);
-    const [anchorEl, setAnchorEl] = React.useState(null);
 
     useEffect(() => {
         if (path !== null) {
             history.push(path);
         }
         if (checkAuth) {
-            check();
+            // check();
             
             setCheckAuth(false);
         }
@@ -28,60 +25,38 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     // Not really sure why I need to include these
     // React throws an error screaming about infinite loops
 
-    function handleClick(event) {
-        setAnchorEl(event.currentTarget);
-    }
-    
-    function handleClose() {
-        setAnchorEl(null);
-    }
-
     let menuItems = <Fragment>
-        <MenuItem onClick={handleClose}>
+        <Button variant="contained">
             <Link to="/login">Login</Link>
-        </MenuItem>
-        <MenuItem onClick={handleClose}>
-            <Link to="/signup">Sign Up</Link>
-        </MenuItem>
+        </Button>
+        <Button variant="contained">
+            <Link to="/signup">Register</Link>
+        </Button>
     </Fragment>
 
     if (auth) {
         menuItems = <Fragment>
-            <MenuItem onClick={handleClose}>
+            <Button variant="contained">
                 <Link to="/newPost">New Post</Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
+            </Button>
+            <Button variant="contained">
                 <Link to="/feed">Feed</Link>
-            </MenuItem>
-            <MenuItem onClick={handleClose}>
+            </Button>
+            <Button variant="contained">
                 <Link to="/hamsters">Hamsters</Link>
-            </MenuItem>
-            <MenuItem onClick={() => {
-                handleClose();
-                logout();
-            }}>
-                Log Out
-            </MenuItem>
+            </Button>
+            <Button onClick={logout} variant="contained">
+                Logout
+            </Button>
         </Fragment>
     }
 
     return <Fragment>
-        <Button 
-            aria-controls="simple-menu" 
-            aria-haspopup="true" 
-            onClick={handleClick}
-        >
-            Open Menu
+        <Button variant="contained">
+            <Link to="/">Home</Link>
         </Button>
-        <Menu_UI
-            id="simple-menu"
-            anchorEl={anchorEl}
-            keepMounted
-            open={Boolean(anchorEl)}
-            onClose={handleClose}
-        >
-            {menuItems}
-        </Menu_UI>
+
+        { menuItems }
     </Fragment>
 };
 

@@ -1,5 +1,7 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch } from 'react-router-dom';
+import Container from '@material-ui/core/Container';
+import Box from '@material-ui/core/Box';
 
 // Components
 import Menu from "./Menu";
@@ -21,17 +23,21 @@ import NotFound from "../pages/NotFound";
 function App() {
     return (
         <BrowserRouter>
-            <Menu />
-            <Switch>
-                <Route exact path="/" component={Landing} />
-                <Route path="/login" component={Login} />
-                <Route path="/signup" component={SignUp} />
-                <PrivateRoute path="/dash" component={Dash} />
-                <PrivateRoute path="/hamsters" component={Hamsters} />
-                <PrivateRoute path="/newPost" component={NewPost} />
-                <PrivateRoute path="/feed" component={Feed} />
-                <Route component={NotFound} />
-            </Switch>
+            <Container>
+                <Box my={4}>
+                    <Menu />
+                    <Switch>
+                        <Route exact path="/" component={Landing} />
+                        <Route path="/login" component={Login} />
+                        <Route path="/signup" component={SignUp} />
+                        <PrivateRoute path="/dash" component={Dash} />
+                        <PrivateRoute path="/hamsters" component={Hamsters} />
+                        <PrivateRoute path="/newPost" component={NewPost} />
+                        <PrivateRoute path="/feed" component={Feed} />
+                        <Route component={NotFound} />
+                    </Switch>
+                </Box>
+            </Container>
         </BrowserRouter>
     );
 }

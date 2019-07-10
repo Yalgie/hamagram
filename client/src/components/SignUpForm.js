@@ -1,6 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createUser } from "../store/actions";
+import { makeStyles } from '@material-ui/core/styles';
+import TextField from '@material-ui/core/TextField';
+import Button from '@material-ui/core/Button';
 
 const SignUp = ({ createUser, msg }) => {
     // Using react useState hooks
@@ -8,43 +11,90 @@ const SignUp = ({ createUser, msg }) => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
+    const classes = useStyles();
 
     return (
-        <form onSubmit={(e) => {
-            // Captures input data and passes it through to redux createUser action
-            e.preventDefault();
+        <form 
+            className={classes.container} 
+            noValidate 
+            autoComplete="off" 
+            onSubmit={(e) => {
+                // Captures input data and passes it through to redux createUser action
+                e.preventDefault();
 
-            if (password === password2) {
-                createUser(username, password);
-                setUsername("");
-                setPassword("");
-                setPassword2("");
+                if (password === password2) {
+                    createUser(username, password);
+                    setUsername("");
+                    setPassword("");
+                    setPassword2("");
+                }
+                else {
+                    setError("Password don't match")
+                }
             }
-            else {
-                setError("Password don't match")
-            }
-        }}>
-            <code>{error}</code>
-            <code>{msg}</code>
-            <input 
+        }>
+            {/* <code>{error}</code>
+            <code>{msg}</code> */}
+            <TextField
+                required
+                label="Username"
+                id="username"
+                className={classes.textField}
+                margin="normal"
+                variant="outlined"
                 onChange={e => setUsername(e.target.value)} 
-                type="text" 
-                placeholder="Enter Username" 
             />
-            <input 
-                onChange={e => setPassword(e.target.value)} 
-                type="password" 
-                placeholder="Enter Password"
+            <TextField
+                required
+                label="Password"
+                id="password"
+                className={classes.textField}
+                type="password"
+                margin="normal"
+                variant="outlined"
+                onChange={e => setPassword(e.target.value)}
             />
-            <input 
+            <TextField
+                required
+                label="Confirm Password"
+                id="password2"
+                className={classes.textField}
+                type="password"
+                margin="normal"
+                variant="outlined"
                 onChange={e => setPassword2(e.target.value)} 
-                type="password" 
-                placeholder="Enter Password"
             />
-            <button type="submit" value="submit">SignUp</button>
+  
+            <Button type="submit" value="submit" variant="contained" className={classes.button}>
+                Sign Up
+            </Button>
         </form>
     )
 }
+
+const useStyles = makeStyles(theme => ({
+    container: {
+        display: 'flex',
+        flexFlow: 'column',
+        alignItems: 'center'
+    },
+    textField: {
+        marginLeft: theme.spacing(1),
+        marginRight: theme.spacing(1),
+        maxWidth: '400px',
+        width: '100%'
+    },
+    dense: {
+        marginTop: theme.spacing(2),
+    },
+    menu: {
+        width: 200,
+    },
+    button: {
+        margin: theme.spacing(1),
+        maxWidth: '400px',
+    },
+}));
 
 // Redux Wizardry
 // Mapping state to props and passing dispatch functions through
