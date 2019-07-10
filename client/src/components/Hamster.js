@@ -1,11 +1,14 @@
-import React, { Fragment } from 'react';
+import React from 'react';
+import Paper from '@material-ui/core/Paper';
+import useStyles from "./Styles/hamster";
 
 export default function Hamster({ username, created }) {
+    const classes = useStyles();
 
     return (
-        <Fragment>
+        <Paper className={classes.paper}>
             <p>{username}</p>
             <p>{created}</p>
-        </Fragment>
+        </Paper>
     )
 }

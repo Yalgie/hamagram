@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { login, getPosts } from "../../store/actions";
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import useStyles from "../Styles/form";
 
 const SignUp = ({ login }) => {
     // Using react useState hooks
@@ -13,7 +13,7 @@ const SignUp = ({ login }) => {
 
     return (
         <form 
-            className={classes.container} 
+            className={classes.loginContainer} 
             noValidate 
             autoComplete="off" 
             onSubmit={(e) => {
@@ -52,25 +52,7 @@ const SignUp = ({ login }) => {
             </Button>
         </form>
     )
-}
-
-// MaterialUI Styles
-const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        flexFlow: 'column',
-        marginTop: theme.spacing(1),
-    },
-    textField: {
-        marginBottom: theme.spacing(1),
-        maxWidth: '400px',
-        width: '100%'
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        maxWidth: '400px',
-    },
-}));
+};
 
 // Redux Wizardry
 const mapStateToProps = state => {

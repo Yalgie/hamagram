@@ -1,9 +1,9 @@
 import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
 import Paper from '@material-ui/core/Paper';
 import Badge from '@material-ui/core/Badge';
 import Icon from '@material-ui/core/Icon';
 import Divider from '@material-ui/core/Divider';
+import useStyles from "./Styles/hamster";
 
 export default function Posts({ title, username, content, created}) {
     const classes = useStyles();
@@ -26,27 +26,3 @@ export default function Posts({ title, username, content, created}) {
         </Paper>
     )
 }
-
-// MaterialUI Styles
-const useStyles = makeStyles(theme => ({
-    paper: {
-        marginTop: theme.spacing(1),
-        padding: theme.spacing(2),
-        color: theme.palette.text.secondary,
-        minHeight: "150px"
-    },
-    margin: {
-        margin: theme.spacing(1),
-        marginRight: theme.spacing(2),
-    },
-    icon: {
-        color: "#333"
-    },
-    info: {
-        display: "flex",
-        marginTop: theme.spacing(2),
-    },
-    content: {
-        marginBottom: theme.spacing(2),
-    }
-}));

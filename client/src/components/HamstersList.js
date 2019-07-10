@@ -15,6 +15,7 @@ const HamstersList = ({ hamsters = [] }) => {
     return hamstersList;
 }
 
+// Redux Wizardy
 const mapStateToProps = state => {
     return {
         hamsters: state.hamsters,

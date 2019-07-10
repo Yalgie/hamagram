@@ -1,15 +1,15 @@
 import React, { useState } from 'react';
+import { withRouter } from 'react-router-dom';
+import { connect } from 'react-redux';
 import marked from 'marked';
 import markedParse from 'html-react-parser';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
-import { makeStyles } from '@material-ui/core/styles';
-import { connect } from 'react-redux';
 import { getPosts } from "../../store/actions";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
+import useStyles from "../Styles/form";
 
 const PostForm = ({ username, history, getPosts }) => {
     const [title, setTitle] = useState("");
@@ -93,32 +93,7 @@ const PostForm = ({ username, history, getPosts }) => {
             </Grid>
         </Grid>
     )
-}
-
-// MaterialUI Styles
-const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        flexFlow: 'column',
-        marginTop: theme.spacing(1),
-    },
-    textField: {
-        marginBottom: theme.spacing(1),
-        width: '100%'
-    },
-    button: {
-        marginTop: theme.spacing(1),
-    },
-    root: {
-        flexGrow: 1,
-    },
-    paper: {
-        marginTop: theme.spacing(1),
-        padding: theme.spacing(2),
-        color: theme.palette.text.secondary,
-        minHeight: "150px"
-    },
-}));
+};
 
 // Redux Wizardry
 const mapStateToProps = state => {

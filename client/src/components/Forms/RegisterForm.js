@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
 import { connect } from 'react-redux';
 import { createUser } from "../../store/actions";
-import { makeStyles } from '@material-ui/core/styles';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
+import useStyles from "../Styles/form";
 
 const RegisterForm = ({ createUser }) => {
     // Using react useState hooks
@@ -69,25 +69,7 @@ const RegisterForm = ({ createUser }) => {
             </Button>
         </form>
     )
-}
-
-// MaterialUI Styles
-const useStyles = makeStyles(theme => ({
-    container: {
-        display: 'flex',
-        flexFlow: 'column',
-        marginTop: theme.spacing(1),
-    },
-    textField: {
-        marginBottom: theme.spacing(1),
-        maxWidth: '400px',
-        width: '100%'
-    },
-    button: {
-        marginTop: theme.spacing(1),
-        maxWidth: '400px',
-    },
-}));
+};
 
 // Redux Wizardry
 const mapStateToProps = state => {
