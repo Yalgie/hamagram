@@ -25,4 +25,4 @@ export default function Posts({ title, username, content, created}) {
             </div>
         </Paper>
     )
-}
+};

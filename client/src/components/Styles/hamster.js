@@ -5,6 +5,6 @@ export default makeStyles(theme => ({
         marginTop: theme.spacing(1),
         padding: theme.spacing(2),
         color: theme.palette.text.secondary,
-        minHeight: "150px"
+        minHeight: "150px",
     },
 }));

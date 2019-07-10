@@ -20,5 +20,5 @@ export default makeStyles(theme => ({
     },
     content: {
         marginBottom: theme.spacing(2),
-    }
+    },
 }));

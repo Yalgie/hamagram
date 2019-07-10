@@ -8,5 +8,5 @@ export default makeStyles(theme => ({
     link: {
         color: "#333",
         textDecoration: "none"
-    }
+    },
 }));

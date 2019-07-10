@@ -14,8 +14,8 @@ const PrivateRoute = ({ component: Component, path, auth }) => {
 // Redux Wizardry
 const mapStateToProps = state => {
     return {
-        auth: state.auth
+        auth: state.auth,
     }
-}
+};
 
 export default connect(mapStateToProps)(PrivateRoute);

@@ -74,9 +74,9 @@ const RegisterForm = ({ createUser }) => {
 // Redux Wizardry
 const mapStateToProps = state => {
     return {
-        msg: state.msg
+        msg: state.msg,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -84,6 +84,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(createUser(username, password));
         }
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(RegisterForm);

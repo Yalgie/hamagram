@@ -22,13 +22,13 @@ const PostsList = ({ posts = [] }) => {
     })
     
     return postsList;
-}
+};
 
 // Redux Wizardry
 const mapStateToProps = state => {
     return {
         posts: state.posts,
     }
-}
+};
 
 export default connect(mapStateToProps)(PostsList);

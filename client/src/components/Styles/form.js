@@ -10,11 +10,11 @@ export default makeStyles(theme => ({
         display: 'flex',
         flexFlow: 'column',
         marginTop: theme.spacing(1),
-        maxWidth: "400px"
+        maxWidth: "400px",
     },
     textField: {
         marginBottom: theme.spacing(1),
-        width: '100%'
+        width: '100%',
     },
     button: {
         marginTop: theme.spacing(1),
@@ -26,6 +26,6 @@ export default makeStyles(theme => ({
         marginTop: theme.spacing(1),
         padding: theme.spacing(2),
         color: theme.palette.text.secondary,
-        minHeight: "150px"
+        minHeight: "150px",
     },
 }));

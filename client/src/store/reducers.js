@@ -1,4 +1,4 @@
-// Updates state based on what was pased from the actions
+// Updates state based on what was passed from the actions
 
 export default (state = {}, action) => {
     switch(action.type) {
@@ -23,4 +23,4 @@ export default (state = {}, action) => {
         default:
             return state;
     }
-}
+};

@@ -7,4 +7,4 @@ export default function Home() {
             <p>A blogging platform for hamsters of all shapes and sizes!</p>
         </Fragment>
     );
-}
+};

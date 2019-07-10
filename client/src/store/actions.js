@@ -10,11 +10,12 @@ import axios from 'axios';
     type refers to the reducer type we want to dispatch to - see
     ./reducers.js
 */
+
 const login = (username, password) => {
     return async (dispatch) => {
         const res = await axios.post(`/api/v1/auth/login`, {
             username,
-            password
+            password,
         });
 
         let path = null;
@@ -28,10 +29,10 @@ const login = (username, password) => {
             auth: res.data.authenticated,
             msg: res.data.message,
             username: res.data.username,
-            path: path
-        })
+            path: path,
+        });
     }
-}
+};
 
 const logout = () => {
     return async (dispatch) => {
@@ -48,10 +49,10 @@ const logout = () => {
             auth: res.data.authenticated,
             msg: "Logged Out",
             username: res.data.username,
-            path: path
-        })
+            path: path,
+        });
     }
-}
+};
 
 // Checks if there is a current authenticated session
 const check = () => {
@@ -63,16 +64,16 @@ const check = () => {
             auth: res.data.authenticated,
             msg: res.data.message,
             username: res.data.username,
-            path: null
-        })
+            path: null,
+        });
     }
-}
+};
 
 const createUser = (username, password) => {
     return async (dispatch) => {
         const res = await axios.post(`/api/v1/hamster`, {
             username,
-            password
+            password,
         });
 
         let path = null;
@@ -86,10 +87,10 @@ const createUser = (username, password) => {
             auth: res.data.authenticated,
             msg: res.data.message,
             username: res.data.username,
-            path: path
-        })
+            path: path,
+        });
     }
-}
+};
 
 // Gets ALL posts
 const getPosts = () => {
@@ -98,10 +99,10 @@ const getPosts = () => {
 
         dispatch({
             type: "SET_POSTS",
-            posts: res.data.posts
-        })
+            posts: res.data.posts,
+        });
     }
-}
+};
 
 // Gets ALL hamsters
 const getHamsters = () => {
@@ -110,9 +111,9 @@ const getHamsters = () => {
 
         dispatch({
             type: "SET_HAMSTERS",
-            hamsters: res.data.hamsters
-        })
+            hamsters: res.data.hamsters,
+        });
     }
-}
+};
 
 export { login, logout, check, createUser, getPosts, getHamsters };

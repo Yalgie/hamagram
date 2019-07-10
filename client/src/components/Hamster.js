@@ -11,4 +11,4 @@ export default function Hamster({ username, created }) {
             <p>{created}</p>
         </Paper>
     )
-}
+};

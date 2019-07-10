@@ -33,7 +33,7 @@ const PostForm = ({ username, history, getPosts }) => {
         await axios.post(`/api/v1/post`, {
             username,
             title,
-            content: md
+            content: md,
         });
 
         // Once post is saved - getting all posts
@@ -98,9 +98,9 @@ const PostForm = ({ username, history, getPosts }) => {
 // Redux Wizardry
 const mapStateToProps = state => {
     return {
-        username: state.username
+        username: state.username,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -108,6 +108,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(getPosts());
         },
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PostForm));

@@ -56,9 +56,9 @@ const SignUp = ({ login }) => {
 // Redux Wizardry
 const mapStateToProps = state => {
     return {
-        msg: state.msg
+        msg: state.msg,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -69,6 +69,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(getPosts());
         }
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(SignUp);

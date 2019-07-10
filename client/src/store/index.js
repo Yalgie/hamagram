@@ -1,6 +1,7 @@
 import { createStore, applyMiddleware } from 'redux';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import thunk from 'redux-thunk';
+
 // Thunk is required if you are using async action calls
 // By default redux only supports synchronous updates
 
@@ -12,11 +13,11 @@ import reducers from "./reducers";
 
 const initialState = {
     auth: false,
-    message: ""
-}
+    message: "",
+};
 
 export default createStore(
     reducers,
     { ...initialState },
     composeWithDevTools(applyMiddleware(thunk))
-)
+);

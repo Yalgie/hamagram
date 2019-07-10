@@ -63,9 +63,9 @@ const mapStateToProps = state => {
     return {
         auth: state.auth,
         msg: state.msg,
-        path: state.path
+        path: state.path,
     }
-}
+};
 
 const mapDispatchToProps = dispatch => {
     return {
@@ -82,6 +82,6 @@ const mapDispatchToProps = dispatch => {
             dispatch(getHamsters());
         },
     }
-}
+};
 
 export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Menu));
