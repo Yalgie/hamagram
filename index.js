@@ -25,9 +25,9 @@ app.use(cookieSession({
     maxAge: 24 * 60 * 60 * 1000 // 24 hours
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
-app.use(bodyParser.json());
-app.use(cors());
-app.use(helmet());
+app.use(bodyParser.json()); // Allows req.body
+app.use(cors()); // Enabling CORS for requests
+app.use(helmet()); // Built in security wrapper
 
 // Setting API routes
 app.use('/api/v1/hamster', hamster);
@@ -38,8 +38,13 @@ if (ENV === "dev") {
     app.use(logger('dev'));
 }
 else if (ENV === "production") {
-    // Serving build files if in production
-    // Uses reacts local hot reload server locally
+    /* 
+        Serving build files if app is in production, if in
+        dev we use the npm run dev script which concurrently
+        starts this script with nodemon and runs the react
+        dev server 
+    */
+   
     app.use(express.static(path.join(
         __dirname, 
         'client', 

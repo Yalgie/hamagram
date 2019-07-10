@@ -1,3 +1,5 @@
+// Updates state based on what was pased from the actions
+
 export default (state = {}, action) => {
     switch(action.type) {
         case 'SET_AUTH':

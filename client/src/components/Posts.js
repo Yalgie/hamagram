@@ -4,13 +4,13 @@ import { connect } from 'react-redux';
 import markedParse from 'html-react-parser';
 import marked from 'marked';
 
-const Posts = ({ posts }) => {
+const Posts = ({ posts = [] }) => {
     // Looping through all posts in the DB and parsing the markdown
     const postFeed = posts.map(post => {
         const html = marked(JSON.parse(post.content));
         const parsed = markedParse(html);
 
-        // Passing props into the Post component
+        // Passing relevant props into the Post component
         return <Post 
             key={post._id}
             id={post._id}

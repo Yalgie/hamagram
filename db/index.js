@@ -51,6 +51,7 @@ const connect = (cb) => {
         console.log(sucess("DB Disconnected"));
     });
 
+    // Tries to gracefully close db connection
     process.on('SIGINT', () => {  
         db.close(function () { 
             console.log(warning('DB Terminated')); 

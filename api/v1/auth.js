@@ -5,6 +5,7 @@ const bcrypt = require('bcrypt');
 const hamsterSchema = require('../../db/schemas/hamster');
 
 router.post('/', (req, res) => {
+    // Checks if there is a current authenticated session
     const isAuth = req.session.auth;
     
     if (isAuth) {
@@ -63,6 +64,7 @@ router.post('/login', (req, res) => {
     });    
 });
 
+// Killing the session if the user logs out
 router.post('/logout', (req, res) => {
     req.session.auth = false;
     req.session = null;

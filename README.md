@@ -33,3 +33,5 @@ npm run dev
 - Added authentication in and private routes that redirect if not authenticated
 - Added flash messaging for signup form
 - Starting to pass customized user data through
+- Adding some more detailed comments throughout the app
+- Rebuild and merged to master to check if heroku is all good still

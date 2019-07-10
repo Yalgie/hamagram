@@ -12,22 +12,28 @@ const NewPost = ({ username, history, getPosts }) => {
     const [html, setHtml] = useState("");
 
     const parseMD = (md) => {
+        // Parses the markdown into html
         const html = marked(md);
+        // Instead of setting dangerously set html
+        // This does some magic
         const parsed = markedParse(html);
-
+        
         setHtml(parsed);
         setMd(md);
     }
 
     const createPost = async () => {
-        await axios.post(`/api/v1/post`, {
+        // Send new post to DB via API
+        await axios.post(`/api/v1/feed`, {
             username,
             title,
             content: md
         });
 
+        // Once post is saved - getting all posts
+        // and redirects to the feed page
         getPosts();
-        history.push("/posts");
+        history.push("/feed");
     }
 
     return (

@@ -1,5 +1,15 @@
 import axios from 'axios';
 
+/* 
+    All these async function perform an axios get/post req
+    once they're done it will dispatch an event to the
+    redux producers and update the global state, if we update
+    the path object, react will redirect to the path using the
+    withRouter method (see Menu.js useEffect() method for this).
+
+    type refers to the reducer type we want to dispatch to - see
+    ./reducers.js
+*/
 const login = (username, password) => {
     return async (dispatch) => {
         const res = await axios.post(`/api/v1/auth/login`, {
@@ -43,6 +53,7 @@ const logout = () => {
     }
 }
 
+// Checks if there is a current authenticated session
 const check = () => {
     return async (dispatch) => {
         const res = await axios.post(`/api/v1/auth/`);
@@ -86,6 +97,7 @@ const createUser = (username, password) => {
     }
 }
 
+// Gets all posts
 const getPosts = () => {
     return async (dispatch) => {
         const res = await axios.get(`/api/v1/post`);
@@ -97,6 +109,7 @@ const getPosts = () => {
     }
 }
 
+// Gets all hamsters
 const getHamsters = () => {
     return async (dispatch) => {
         const res = await axios.get(`/api/v1/hamster/all`);

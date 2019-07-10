@@ -2,9 +2,13 @@ import React, { Fragment, useEffect, useState } from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { logout, check, getPosts, getHamsters } from "../store/actions";
+import Button from '@material-ui/core/Button';
+import Menu_UI from '@material-ui/core/Menu';
+import MenuItem from '@material-ui/core/MenuItem';
 
 const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => {
     const [checkAuth, setCheckAuth] = useState(true);
+    const [anchorEl, setAnchorEl] = React.useState(null);
 
     useEffect(() => {
         if (path !== null) {
@@ -24,22 +28,61 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     // Not really sure why I need to include these
     // React throws an error screaming about infinite loops
 
-    // Rendering menu UI based on authenticated state from redux
+    function handleClick(event) {
+        setAnchorEl(event.currentTarget);
+    }
+    
+    function handleClose() {
+        setAnchorEl(null);
+    }
+
+    let menuItems = <Fragment>
+        <MenuItem onClick={handleClose}>
+            <Link to="/login">Login</Link>
+        </MenuItem>
+        <MenuItem onClick={handleClose}>
+            <Link to="/signup">Sign Up</Link>
+        </MenuItem>
+    </Fragment>
+
     if (auth) {
-        return <Fragment>
-            <button><Link to="/posts">My Posts</Link></button>
-            <button><Link to="/newPost">New Post</Link></button>
-            <button><Link to="/feed">Feed</Link></button>
-            <button><Link to="/hamsters">Hamsters</Link></button>
-            <button onClick={() => logout()}>Log Out</button>
+        menuItems = <Fragment>
+            <MenuItem onClick={handleClose}>
+                <Link to="/newPost">New Post</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+                <Link to="/feed">Feed</Link>
+            </MenuItem>
+            <MenuItem onClick={handleClose}>
+                <Link to="/hamsters">Hamsters</Link>
+            </MenuItem>
+            <MenuItem onClick={() => {
+                handleClose();
+                logout();
+            }}>
+                Log Out
+            </MenuItem>
         </Fragment>
     }
-    else {
-        return <Fragment>
-            <button><Link to="/login">Login</Link></button>
-            <button><Link to="/signup">Sign Up</Link></button>
-        </Fragment>
-    }
+
+    return <Fragment>
+        <Button 
+            aria-controls="simple-menu" 
+            aria-haspopup="true" 
+            onClick={handleClick}
+        >
+            Open Menu
+        </Button>
+        <Menu_UI
+            id="simple-menu"
+            anchorEl={anchorEl}
+            keepMounted
+            open={Boolean(anchorEl)}
+            onClose={handleClose}
+        >
+            {menuItems}
+        </Menu_UI>
+    </Fragment>
 };
 
 // Redux Wizardry
