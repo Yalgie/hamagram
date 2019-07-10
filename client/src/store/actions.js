@@ -58,18 +58,12 @@ const check = () => {
     return async (dispatch) => {
         const res = await axios.post(`/api/v1/auth/`);
 
-        let path = null;
-
-        if (res.data.authenticated) {
-            path = "/dash";
-        }
-
         dispatch({
             type: "SET_AUTH",
             auth: res.data.authenticated,
             msg: res.data.message,
             username: res.data.username,
-            path: path
+            path: null
         })
     }
 }

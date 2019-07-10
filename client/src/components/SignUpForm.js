@@ -41,6 +41,7 @@ const SignUp = ({ createUser, msg }) => {
                 id="username"
                 className={classes.textField}
                 margin="normal"
+                autoComplete="username"
                 variant="outlined"
                 onChange={e => setUsername(e.target.value)} 
             />
@@ -51,6 +52,7 @@ const SignUp = ({ createUser, msg }) => {
                 className={classes.textField}
                 type="password"
                 margin="normal"
+                autoComplete="current-password"
                 variant="outlined"
                 onChange={e => setPassword(e.target.value)}
             />
@@ -61,11 +63,17 @@ const SignUp = ({ createUser, msg }) => {
                 className={classes.textField}
                 type="password"
                 margin="normal"
+                autoComplete="current-password"
                 variant="outlined"
                 onChange={e => setPassword2(e.target.value)} 
             />
   
-            <Button type="submit" value="submit" variant="contained" className={classes.button}>
+            <Button 
+                type="submit" 
+                value="submit" 
+                variant="contained" 
+                className={classes.button}
+            >
                 Sign Up
             </Button>
         </form>
@@ -83,12 +91,6 @@ const useStyles = makeStyles(theme => ({
         marginRight: theme.spacing(1),
         maxWidth: '400px',
         width: '100%'
-    },
-    dense: {
-        marginTop: theme.spacing(2),
-    },
-    menu: {
-        width: 200,
     },
     button: {
         margin: theme.spacing(1),

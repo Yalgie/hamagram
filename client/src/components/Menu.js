@@ -12,8 +12,7 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
             history.push(path);
         }
         if (checkAuth) {
-            // check();
-            
+            check();
             setCheckAuth(false);
         }
 
