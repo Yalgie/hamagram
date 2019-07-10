@@ -2,14 +2,14 @@ const mongoose = require('mongoose');
 
 const user = new mongoose.Schema({
     username: {
-        type: String
+        type: String,
     },
     password: {
-        type: String
+        type: String,
     },
     createdDate: {
-        type: Date
-    }
+        type: Date,
+    },
 });
 
 module.exports = user;

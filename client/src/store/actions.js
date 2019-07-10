@@ -27,7 +27,6 @@ const login = (username, password) => {
         dispatch({
             type: "SET_AUTH",
             auth: res.data.authenticated,
-            msg: res.data.message,
             username: res.data.username,
             path: path,
         });
@@ -47,7 +46,6 @@ const logout = () => {
         dispatch({
             type: "SET_AUTH",
             auth: res.data.authenticated,
-            msg: "Logged Out",
             username: res.data.username,
             path: path,
         });
@@ -62,7 +60,6 @@ const check = () => {
         dispatch({
             type: "SET_AUTH",
             auth: res.data.authenticated,
-            msg: res.data.message,
             username: res.data.username,
             path: null,
         });
@@ -85,7 +82,6 @@ const createUser = (username, password) => {
         dispatch({
             type: "SET_AUTH",
             auth: res.data.authenticated,
-            msg: res.data.message,
             username: res.data.username,
             path: path,
         });
@@ -107,7 +103,7 @@ const getPosts = () => {
 // Gets ALL hamsters
 const getHamsters = () => {
     return async (dispatch) => {
-        const res = await axios.get(`/api/v1/hamster/all`);
+        const res = await axios.get(`/api/v1/hamster`);
 
         dispatch({
             type: "SET_HAMSTERS",
@@ -116,4 +112,17 @@ const getHamsters = () => {
     }
 };
 
-export { login, logout, check, createUser, getPosts, getHamsters };
+// Likes a post
+// This could also potentially just be 'updateNote' as i'm passing through the whole note object
+const like = post => {
+    return async (dispatch) => {
+        const res = await axios.post(`/api/v1/post/like`, {...post});
+
+        dispatch({
+            type: "SET_POSTS",
+            posts: res.data.posts,
+        });
+    }
+};
+
+export { login, logout, check, createUser, getPosts, getHamsters, like };

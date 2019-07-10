@@ -16,13 +16,12 @@ const info = chalk.bold.cyan;
 const PORT = process.env.PORT || 3001;
 const ENV = process.env.ENV;
 const SECRET = process.env.SECRET;
-
 const app = express();
 
 app.use(cookieSession({
     name: 'hamagramSession',
     secret: SECRET,
-    maxAge: 24 * 60 * 60 * 1000 // 24 hours
+    maxAge: 24 * 60 * 60 * 1000, // 24 hours
 }));
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(bodyParser.json()); // Allows req.body
@@ -48,7 +47,7 @@ else if (ENV === "production") {
     app.use(express.static(path.join(
         __dirname, 
         'client', 
-        'build'
+        'build',
     )));
 
     app.get('*', (req, res) => {
@@ -56,7 +55,7 @@ else if (ENV === "production") {
             __dirname, 
             'client', 
             'build', 
-            'index.html'
+            'index.html',
         ));
     });
 }

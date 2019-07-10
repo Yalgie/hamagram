@@ -34,6 +34,7 @@ const PostForm = ({ username, history, getPosts }) => {
             username,
             title,
             content: md,
+            likes: 0
         });
 
         // Once post is saved - getting all posts

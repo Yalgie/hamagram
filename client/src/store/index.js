@@ -13,7 +13,6 @@ import reducers from "./reducers";
 
 const initialState = {
     auth: false,
-    message: "",
 };
 
 export default createStore(

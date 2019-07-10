@@ -72,11 +72,7 @@ const RegisterForm = ({ createUser }) => {
 };
 
 // Redux Wizardry
-const mapStateToProps = state => {
-    return {
-        msg: state.msg,
-    }
-};
+const mapStateToProps = state => ({});
 
 const mapDispatchToProps = dispatch => {
     return {

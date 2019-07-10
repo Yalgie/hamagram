@@ -2,17 +2,20 @@ const mongoose = require('mongoose');
 
 const post = new mongoose.Schema({
     username: {
-        type: String
+        type: String,
     },
     title: {
-        type: String
+        type: String,
     },
     content: {
-        type: String
+        type: String,
+    },
+    likes: {
+        type: Number,
     },
     createdDate: {
-        type: Date
-    }
+        type: Date,
+    },
 });
 
 module.exports = post;

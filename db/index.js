@@ -17,9 +17,9 @@ const connect = (cb) => {
     mongoose.connect(CONN, {
         auth: {
             user: USER,
-            password: PASS
+            password: PASS,
         }, 
-        useNewUrlParser: true
+        useNewUrlParser: true,
     });
 
     const db = mongoose.connection;
@@ -61,5 +61,5 @@ const connect = (cb) => {
 }
 
 module.exports = { 
-    connect
+    connect,
 };

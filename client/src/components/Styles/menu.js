@@ -9,4 +9,7 @@ export default makeStyles(theme => ({
         color: "#333",
         textDecoration: "none"
     },
+    activeLink: {
+        color: "#33cc66",
+    },
 }));

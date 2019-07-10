@@ -12,7 +12,8 @@ export default makeStyles(theme => ({
         marginRight: theme.spacing(2),
     },
     icon: {
-        color: "#333"
+        color: "#333",
+        cursor: "pointer",
     },
     info: {
         display: "flex",

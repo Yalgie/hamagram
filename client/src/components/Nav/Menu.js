@@ -27,7 +27,7 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     // React throws an error screaming about infinite loops
 
     const ButtonLink = ({ path, text }) => {
-        return <Link className={classes.link} activeClassName="active" to={path}>
+        return <Link className={classes.link} to={path}>
             <Button className={classes.button} variant="contained">
                 {text}
             </Button>
@@ -62,7 +62,6 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
 const mapStateToProps = state => {
     return {
         auth: state.auth,
-        msg: state.msg,
         path: state.path,
     }
 };
