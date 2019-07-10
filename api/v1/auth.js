@@ -67,7 +67,6 @@ router.post('/logout', (req, res) => {
 
     res.status(200).send({
         authenticated: false,
-        message: "Logged Out",
         username: null,
     });
 });

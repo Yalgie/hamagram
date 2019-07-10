@@ -10,6 +10,7 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
     const classes = useStyles();
 
     useEffect(() => {
+        // I'm still figuring out how to use the useEffect hook
         if (path !== null) {
             history.push(path);
         }
@@ -18,13 +19,14 @@ const Menu = ({ auth, logout, check, path, history, getPosts, getHamsters }) => 
             setCheckAuth(false);
         }
 
+        // This fetches posts and hamsters using redux
+        // Once fetched it will update the global state
+        // See ../../store/actions for action calls and reducers
         if (auth) {
             getPosts();
             getHamsters();
         }
     }, [path, checkAuth, history, check, getPosts, getHamsters, auth]);
-    // Not really sure why I need to include these
-    // React throws an error screaming about infinite loops
 
     const ButtonLink = ({ path, text }) => {
         return <Link className={classes.link} to={path}>
