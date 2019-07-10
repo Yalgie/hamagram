@@ -28,7 +28,11 @@ const login = (username, password) => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             username: res.data.username,
-            path: path,
+        });
+
+        dispatch({
+            type: "SET_REDIRECT",
+            path,
         });
     }
 };
@@ -47,7 +51,11 @@ const logout = () => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             username: res.data.username,
-            path: path,
+        });
+
+        dispatch({
+            type: "SET_REDIRECT",
+            path,
         });
     }
 };
@@ -61,6 +69,10 @@ const check = () => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             username: res.data.username,
+        });
+
+        dispatch({
+            type: "SET_REDIRECT",
             path: null,
         });
     }
@@ -83,7 +95,11 @@ const createUser = (username, password) => {
             type: "SET_AUTH",
             auth: res.data.authenticated,
             username: res.data.username,
-            path: path,
+        });
+
+        dispatch({
+            type: "SET_REDIRECT",
+            path,
         });
     }
 };
@@ -96,6 +112,29 @@ const getPosts = () => {
         dispatch({
             type: "SET_POSTS",
             posts: res.data.posts,
+        });
+    }
+};
+
+// Create a post and then redirect to /feed
+const createPost = (data) => {
+    return async (dispatch) => {
+        const res = await axios.post(`/api/v1/post`, {data});
+
+        dispatch({
+            type: "SET_POSTS",
+            posts: res.data.posts,
+        });
+
+        dispatch({
+            type: "SET_AUTH",
+            auth: true,
+            username: data.username,
+        });
+
+        dispatch({
+            type: "SET_REDIRECT",
+            path: "/feed",
         });
     }
 };
@@ -125,4 +164,13 @@ const like = post => {
     }
 };
 
-export { login, logout, check, createUser, getPosts, getHamsters, like };
+export {
+    login,
+    logout,
+    check,
+    createUser,
+    getPosts,
+    getHamsters,
+    like,
+    createPost,
+};

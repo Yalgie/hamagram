@@ -1,7 +1,5 @@
 const express = require('express');
 const router = express.Router();
-const chalk = require('chalk');
-const sucess = chalk.bold.green;
 const mongoose = require('mongoose');
 const postSchema = require('../../db/schemas/post');
 
@@ -9,14 +7,19 @@ router.post('/', (req, res) => {
     const Post = mongoose.model('Post', postSchema);
 
     const newPost = new Post({
-        username: req.body.username,
-        title: req.body.title,
-        content: JSON.stringify(req.body.content),
+        username: req.body.data.username,
+        title: req.body.data.title,
+        content: JSON.stringify(req.body.data.content),
+        likes: req.body.data.likes,
         createdDate: Date.now(),
     });
 
     newPost.save(() => {
-        res.sendStatus(200);
+        Post.find({}, (err, posts) => {
+            res.status(200).send({
+                posts,
+            });
+        });
     });
 });
 

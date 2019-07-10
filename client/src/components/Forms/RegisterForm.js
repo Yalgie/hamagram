@@ -7,6 +7,7 @@ import useStyles from "../Styles/form";
 
 const RegisterForm = ({ createUser }) => {
     // Using react useState hooks
+    const [error, setError] = useState("");
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [password2, setPassword2] = useState("");
@@ -21,14 +22,20 @@ const RegisterForm = ({ createUser }) => {
                 // Captures input data and passes it through to redux createUser action
                 e.preventDefault();
 
-                if (password === password2) {
+                if (password === password2 && username.length > 0) {
                     createUser(username, password);
                     setUsername("");
                     setPassword("");
                     setPassword2("");
+                    setError("");
+                }
+                else {
+                    setError("Error");
                 }
             }
         }>
+            {error}
+            
             <TextField
                 required
                 label="Username"

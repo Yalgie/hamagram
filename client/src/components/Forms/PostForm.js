@@ -1,17 +1,15 @@
 import React, { useState } from 'react';
-import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 import marked from 'marked';
 import markedParse from 'html-react-parser';
-import axios from 'axios';
-import { getPosts } from "../../store/actions";
+import { createPost } from "../../store/actions";
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 import Paper from '@material-ui/core/Paper';
 import Grid from '@material-ui/core/Grid';
 import useStyles from "../Styles/form";
 
-const PostForm = ({ username, history, getPosts }) => {
+const PostForm = ({ username, createPost }) => {
     const [title, setTitle] = useState("");
     const [md, setMd] = useState("");
     const [html, setHtml] = useState("");
@@ -28,21 +26,6 @@ const PostForm = ({ username, history, getPosts }) => {
         setMd(md);
     }
 
-    const createPost = async () => {
-        // Send new post to DB via API
-        await axios.post(`/api/v1/post`, {
-            username,
-            title,
-            content: md,
-            likes: 0
-        });
-
-        // Once post is saved - getting all posts
-        // and redirects to the feed page
-        getPosts();
-        history.push("/feed");
-    }
-
     return (
         <Grid container spacing={2}>
             <Grid item xs={5}>
@@ -53,7 +36,12 @@ const PostForm = ({ username, history, getPosts }) => {
                     onSubmit={(e) => {
                         // Captures input data and passes it through to redux createUser action
                         e.preventDefault();
-                        createPost();
+                        createPost({
+                            username,
+                            title,
+                            content: md,
+                            likes: 0
+                        });
                     }}
                 >
                     <TextField
@@ -105,10 +93,10 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = dispatch => {
     return {
-        getPosts: () => {
-            dispatch(getPosts());
-        },
+        createPost: (username, title, content, likes) => {
+            dispatch(createPost(username, title, content, likes));
+        }
     }
 };
 
-export default connect(mapStateToProps, mapDispatchToProps)(withRouter(PostForm));
+export default connect(mapStateToProps, mapDispatchToProps)(PostForm);

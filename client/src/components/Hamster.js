@@ -7,8 +7,8 @@ export default function Hamster({ username, created }) {
 
     return (
         <Paper className={classes.paper}>
-            <p>{username}</p>
-            <p>{created}</p>
+            <span>Hamster Name:</span>
+            <h1>{username}</h1>
         </Paper>
     )
 };

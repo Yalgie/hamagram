@@ -5,6 +5,7 @@ export default function Hamsters() {
     return (
         <Fragment>
             <h1>Hamsters</h1>
+            <p>Say 'hello' to your hamster network!</p>
             <HamsterList />
         </Fragment>
     );

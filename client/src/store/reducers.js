@@ -7,7 +7,6 @@ export default (state = {}, action) => {
                 ...state,
                 auth: action.auth,
                 msg: action.msg,
-                path: action.path,
                 username: action.username
             }
         case 'SET_POSTS':
@@ -19,6 +18,11 @@ export default (state = {}, action) => {
             return {
                 ...state,
                 hamsters: action.hamsters
+            }
+        case 'SET_REDIRECT':
+            return {
+                ...state,
+                path: action.path,
             }
         default:
             return state;
